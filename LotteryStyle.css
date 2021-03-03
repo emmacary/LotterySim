@@ -1,0 +1,67 @@
+body {
+	font-size: 150%;
+	background-color: #E6FFD0;
+	margin: 0px;
+}
+
+h1 {
+	color: #E6FFD0;
+	font-size: 500%;
+	-webkit-text-stroke: 2px black;
+	text-align: center;
+	background-image: url("cash.jpg");
+	margin: 0px;
+	padding: 2%;
+}
+
+.content {
+	margin: 1%;
+	font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
+}
+
+.numbers {
+	display: flex;
+}
+
+.lotteryInfo {
+	flex: 50%;
+	padding: 2%;
+	text-align: center;
+}
+
+#title1, #title2, {
+	font-size: 150%;
+}
+
+#yourPick, #yourLucky {
+	font-size: 150%;
+}
+
+.textbox {
+	flex: 50%;
+	padding: 2%;
+}
+
+.results {
+	display: flex;
+}
+
+.matchDiv {
+	flex: 50%;
+	margin: 0;
+	text-align: center;
+	background-image: url("flowers.jpg");
+	font-size: 150%;
+	background-size: 100%;
+	border-radius: 10%;
+}
+
+.payoutDiv {
+	flex: 50%;
+	margin: 0;
+	text-align: center;
+	background-image: url("flowers2.jpg");
+	font-size: 150%;
+	background-size: 100%;
+	border-radius: 10%;
+}

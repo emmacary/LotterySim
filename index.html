@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="LotteryStyle.css">
+	<title>Lottery Sim</title>
+</head>
+
+<body>
+	<h1> Lottery Simulator! </h1>
+
+	<div class="content">
+
+		<div class="numbers">
+			<div class="lotteryInfo">
+				<p id="title1"> Your lottery pick is:</p>
+				<p id="yourPick"></p>
+				<br>
+				<p id="title2"> Your lucky number pick is:</p>
+				<p id="yourLucky"></p>
+			</div>
+
+			<div class="textbox">
+				<h3>Enter the first 5 numbers of the winning lottery number: </h3>
+				<input type="text" id="winningNums"/>
+				<button type="submit" onclick="onSubmit()">Submit</button>
+
+				<h3>Enter the winning lucky number: </h3>
+				<input type="text" id="winningLucky"/>
+				<button type="submit2" onclick="onSubmit2()">Submit</button>
+
+				<p id="win"> The winning numbers are: </p>
+				<p id="winlucky"> The winning lucky number is: </p>
+			</div>
+		</div>
+
+		<div class="results">
+			<div class="matchDiv">
+				<p id="matches">Enter the winning numbers!</p>
+				<p id="matchLucky">Enter the winning lucky number!</p>
+			</div>
+			
+			<div class= "payoutDiv">
+				<p id="payout">See how much you would win!</p>
+			</div>
+		</div>
+
+	</div>
+
+	<script language="javascript">
+		var numArray;
+		var lottery = [];
+		var lucky;
+		var winningLucky;
+		var click1;
+		var click2;
+		var count;
+
+		for (i=1; i<=5; i++)
+		{
+			n = Math.random() * 47 + 1;
+			lottery.push(n.toFixed(0));
+		}
+
+		lottery.sort();
+
+		for (i=0; i<5; i++)
+		{
+			document.getElementById("yourPick").innerHTML += lottery[i] + " ";
+		}
+
+
+		var lucky = (Math.random() * 17 + 1).toFixed(0);
+		document.getElementById("yourLucky").innerHTML = lucky;
+
+
+		function onSubmit()
+		{	
+			var winningNums = document.getElementById("winningNums").value;
+			var numArray = winningNums.split(" ");
+			document.getElementById("win").innerHTML = "The winning numbers are: " + numArray;
+
+			count = 0;
+			var tempArray = numArray;
+			for(i=0; i < lottery.length; i++)
+			{
+				for(j=0; j < tempArray.length; j++)
+				{	
+					if (lottery[i] == tempArray[j])
+					{
+						count++;
+						tempArray[j] = -1;
+					}
+				}
+			}
+			document.getElementById("matches").innerHTML = "You had " + count + "  match(es)!";
+			
+			click1 = true;
+			if(click1==true && click2==true)
+				bothClicked();
+		}
+
+		function onSubmit2()
+		{	
+			winningLucky = document.getElementById("winningLucky").value;
+			document.getElementById("winlucky").innerHTML = "The winning lucky number is: " + winningLucky;
+
+			if (winningLucky == lucky)
+			{
+				document.getElementById("matchLucky").innerHTML = "You matched with the lucky number!";
+			}
+			else
+			{
+				document.getElementById("matchLucky").innerHTML = "You did not match with the lucky number.";
+			}
+
+			click2 = true;
+			if(click1==true && click2==true)
+				bothClicked();
+		}
+
+		function bothClicked()
+		{
+			if (count==5)
+			{
+				if (winningLucky==lucky)
+				{
+					document.getElementById("payout").innerHTML = "You get $7,000 a WEEK for LIFE!!";
+				}
+				else
+				{
+					document.getElementById("payout").innerHTML = "You get $25,000 a YEAR for LIFE!!";
+				}
+			}
+			else if (count==4)
+			{
+				if (winningLucky==lucky)
+				{
+					document.getElementById("payout").innerHTML = "You get $5,000!!";
+				}
+				else
+				{
+					document.getElementById("payout").innerHTML = "You get $200!!";
+				}
+			}
+			else if (count==3)
+			{
+				if (winningLucky==lucky)
+				{
+					document.getElementById("payout").innerHTML = "You get $150!!";
+				}
+				else
+				{
+					document.getElementById("payout").innerHTML = "You get $20!!";
+				}
+			}
+			else if (count==2)
+			{
+				if (winningLucky==lucky)
+				{
+					document.getElementById("payout").innerHTML = "You get $25!!";
+				}
+				else
+				{
+					document.getElementById("payout").innerHTML = "You get $3!!";
+				}
+			}
+			else if (count==1)
+			{
+				if (winningLucky==lucky)
+				{
+					document.getElementById("payout").innerHTML = "You get $6!!";
+				}
+				else
+				{
+					document.getElementById("payout").innerHTML = "You didn't win any money :(";
+				}
+			}
+			else if (count==0)
+			{
+				if (winningLucky==lucky)
+				{
+					document.getElementById("payout").innerHTML = "You get $4!!";
+				}
+				else
+				{
+					document.getElementById("payout").innerHTML = "You didn't win any money :(";
+				}
+			}
+		}
+
+	</script>
+
+</body>
+</html>
+
